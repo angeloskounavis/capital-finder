@@ -15,15 +15,16 @@ class handler(BaseHTTPRequestHandler):
             data = r.json()
             capital = data[0]["capital"][0]
 
-            message = f'{dic["country"]} is the capital of {str(capital)}'
+            message = f'the capital of {dic["country"]} is {str(capital)}'
 
         if "capital" in dic:
-            url = "https://restcountries.com/v3.1/name/"
+            url = "https://restcountries.com/v3.1/capital/"
             r = requests.get(url + dic["capital"])
             data = r.json()
-            capital = data[0]["capital"][0]
+            capital = data[0]["name"]["common"]
 
-            message = f'{dic["country"]} is the capital of {str(capital)}'
+            message = f'{dic["capital"]} is the capital of {str(capital)}'
+            
         else:
             message = "Give me a word to define please"
 
